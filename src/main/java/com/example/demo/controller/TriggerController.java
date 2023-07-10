@@ -14,10 +14,11 @@ public class TriggerController {
 
     private final SendService sendService;
 
-    @GetMapping("/send")
-    public String sendMsgToMq(@RequestParam String msg){
-        sendService.sendMsg(msg);
-        return "ok";
-    }
+//    @GetMapping("/send")
+//    public String sendMsgToMq(@RequestParam String msg){
+//        sendService.sendMsg(msg);
+//        return "ok";
+//    }
+
 
 }

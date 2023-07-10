@@ -3,11 +3,28 @@ server:
 spring:
   application:
     name: demo7
+  datasource:
+    username: postgres
+    password: 102502
+    url: jdbc:postgresql://192.168.221.128:15433/postgres
+    driver-class-name: org.postgresql.Driver
   #配置rabbitMq 服务器
   rabbitmq:
     host: 192.168.221.128
     port: 5672
     username: chu
     password: 102502
-#    #虚拟host 可以不设置,使用server默认host
-#    virtual-host: JCcccHost
+  redis:
+    host: 192.168.221.128
+    port: 6379
+    password: 102502
+  kafka:
+    bootstrap-servers: 192.168.221.128:9092
+    consumer:
+      group-id: chu
+      consumer:
+        group-id: ${spring.application.name}-test
+        key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+        value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+  elasticsearch:
+    uris: http:192.168.221.128:9200

@@ -1,7 +1,9 @@
 package com.example.demo.service;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
 
@@ -12,8 +14,10 @@ public class QueueConsumer {
     public void receive(@Payload String fileBody) {
         log.info("ss007队列" + fileBody);
     }
-    @RabbitListener(queues = "{topicQueue1}")
-    public void receiveTopic1() {
 
+    @KafkaListener(topics = {"chu"})
+    public void consumer(ConsumerRecord<String, String> consumerRecord) {
+        log.info(consumerRecord.toString());
     }
+
 }
